@@ -1,19 +1,47 @@
 <!DOCTYPE html>
 <html>
-    <body>
-        <span>Total Clicks: 0</span>
-        <button id="btn">Click me</button>
-    </body>
-    <script>
-        let counter = 0;
-        const button = document.getElementById("btn");
-        const span = document.querySelector("span");
-        function handleClick() {
-            counter = counter + 1;
-            span.innerText = `Total Clicks: ${counter}`;
-        }
-        button.addEventListener("click", handleClick);
 
-        // add handle... handle... handle... handle...
-    </script>
+<body>
+    <div id="root"></div>
+</body>
+<script src="https://unpkg.com/react@18.2.0/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
+    const root = document.getElementById("root")
+    const Title = (
+        <h3 id="title" onMouseEnter={() => console.log('Mouse Enter')}>
+            "Hello, I'm a Span"
+        </h3>
+    );
+    const Button = (
+        <button id="button" style={{backgroundColor:"tomato"}} onClick={() => console.log("I'm Clicked")}
+        >
+            "Click Me"
+        </button>
+    );
+    // Is 'Not' Developer Uses. Only For This Class. 
+    // const h3 = React.createElement(
+    //     "h3",
+    //     {
+    //         id: "title",
+    //         onMouseEnter: () => console.log('Mouse Enter')
+    //     },
+    //     "Hello, I'm a Span"
+    // );
+    // const btn = React.createElement(
+    //     "button",
+    //     {
+    //         onClick: () => console.log("I'm Clicked"),
+    //         style: {
+    //             backgroundColor: "tomato"
+    //         }
+    //     },
+    //     "Click Me"
+    // );
+    const container = React.createElement("div", null, [Title, Button])
+    // Show it to the User
+    ReactDOM.render(container, root);
+</script>
+
 </html>

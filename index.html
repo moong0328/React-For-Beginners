@@ -8,40 +8,22 @@
 <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <script type="text/babel">
-    const root = document.getElementById("root")
-    const Title = (
-        <h3 id="title" onMouseEnter={() => console.log('Mouse Enter')}>
-            "Hello, I'm a Span"
-        </h3>
+    const root = document.getElementById("root");
+    let counter = 0;
+    function countUp() {
+        counter = counter + 1;
+        render();
+    }
+    function render() {
+        ReactDOM.render(<Container />, root);
+    }
+    const Container = () => (
+        <div>
+            <h3>Total Clicks: {counter}</h3>
+            <button onClick={countUp}>"Click Me"</button>
+        </div>
     );
-    const Button = (
-        <button id="button" style={{backgroundColor:"tomato"}} onClick={() => console.log("I'm Clicked")}
-        >
-            "Click Me"
-        </button>
-    );
-    // Is 'Not' Developer Uses. Only For This Class. 
-    // const h3 = React.createElement(
-    //     "h3",
-    //     {
-    //         id: "title",
-    //         onMouseEnter: () => console.log('Mouse Enter')
-    //     },
-    //     "Hello, I'm a Span"
-    // );
-    // const btn = React.createElement(
-    //     "button",
-    //     {
-    //         onClick: () => console.log("I'm Clicked"),
-    //         style: {
-    //             backgroundColor: "tomato"
-    //         }
-    //     },
-    //     "Click Me"
-    // );
-    const container = React.createElement("div", null, [Title, Button])
-    // Show it to the User
-    ReactDOM.render(container, root);
+    render();
 </script>
 
 </html>
